@@ -46,7 +46,7 @@ class Values implements \ArrayAccess {
      * <p>
      * The return value will be casted to boolean if non-boolean was returned.
      */
-    public function offsetExists($offset) {
+    public function offsetExists(mixed $offset): bool {
         return true;
     }
 
@@ -59,7 +59,7 @@ class Values implements \ArrayAccess {
      * </p>
      * @return mixed Can return all value types.
      */
-    public function offsetGet($offset) {
+    public function offsetGet(mixed $offset): mixed {
         $offset = strtolower($offset);
         return array_key_exists($offset, $this->options) ? $this->options[$offset] : self::NONE;
     }
@@ -76,7 +76,7 @@ class Values implements \ArrayAccess {
      * </p>
      * @return void
      */
-    public function offsetSet($offset, $value) {
+    public function offsetSet(mixed $offset, mixed $value): void {
         $this->options[strtolower($offset)] = $value;
     }
 
@@ -89,7 +89,7 @@ class Values implements \ArrayAccess {
      * </p>
      * @return void
      */
-    public function offsetUnset($offset) {
+    public function offsetUnset(mixed $offset): void {
         unset($this->options[$offset]);
     }
 
